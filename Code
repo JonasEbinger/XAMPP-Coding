@@ -1,0 +1,109 @@
+Ergebnis der Datenabfrage
+
+
+<HTML>
+<BODY>
+
+<h1> Ergebnis der Datenabfrage </h1>
+<b1>
+
+<?php
+
+$mymsqli = new mysqli (''localhost'',''Jonas'', ''123456'',''uff'');
+
+if ($mymsqli → connect_errno) {
+echo ''failed'';
+
+}
+
+$sql = “SELECT * FROM lehrer“;
+$result = $mymsqli → query ($sql);
+
+while ($row = $result → fetch_row()) {
+echo $row[0];
+}
+
+?>
+
+</BODY>
+</HTML>
+
+
+
+Datenbank verbinden
+
+<HTML>
+<HEAD>
+	<TITLE> MY_SQL_DATENBANK_VERBINDEN </TITLE>
+</HEAD>
+<BODY>
+	<DIV align=CENTER>
+	<h1> MY_SQL_DATENBANK_VERBINDEN </h1>
+
+<FROM action=“http://localhost/JONAS/AllesAnzeigen.php“ method=''post''>
+
+	<BR>
+	<TEXTAREA name='''Eingabe'' rows=“2“ cols=“4“> SELECT * FROM lehrer;
+	</TEXTAREA>
+	<BR>
+	<INPUT type=“submit“ name=“Senden“ value=“Senden“
+
+</FORM>
+</DIV>
+
+</BODY>
+</HTML>
+
+
+Daten Eintragen
+
+<HTML>
+<HEAD>
+	<TITLE> MY_SQL_DATENBANK_EINTRAGEN</TITLE>
+</HEAD>
+<BODY>
+	<DIV align=CENTER>
+	<h1> MY_SQL_DATENBANK_VERBINDEN </h1>
+
+<FROM action=“http://localhost/JONAS/dbtabelle.php“ method=''post''>
+
+	<BR>
+	<TEXTAREA name='''Eingabe'' rows=“2“ cols=“4“> INSERT INTO lehrer;
+	</TEXTAREA>
+	<BR>
+
+	<TEXTAREA name=''Name'' rows=“2“ cols=“4“>Name;
+	</TEXTAREA>
+	<BR>
+	<TEXTAREA name=''Vorname'' rows=“2“ cols=“4“>Vorname;
+	</TEXTAREA>
+	<BR>
+	<TEXTAREA name=''Alter'' rows=“2“ cols=“4“>Alter;
+	</TEXTAREA>
+	<BR>
+	<TEXTAREA name=''GebDatum'' rows=“2“ cols=“4“>GebDatum;
+	</TEXTAREA>
+	<BR>
+
+	<INPUT type=“submit“ name=“Senden“ value=“Senden“
+
+</FORM>
+</DIV>
+
+</BODY>
+</HTML>
+
+dbtabelle
+
+<?php
+
+$mymsqli = new mysqli (''localhost'',''Jonas'', ''123456'',''uff'');
+
+if ($mymsqli → connect_errno) {
+echo ''failed'';
+}
+
+$sql = INSERT INTO lehrer (Name, Vorname, Alter, Gebdatum)
+Values ('Jonas','Ebinger','19','17.03.2004');
+
+?>
